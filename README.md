@@ -41,12 +41,14 @@ This project implements a Human-in-the-Loop Mathematical Professor AI Agent. It 
 2. **Query the Agent:**
    - Run `python math_agent_query.py` and enter a math question to retrieve similar problems and solutions.
 
-## Next Steps
-- Integrate agent workflow/orchestration (LangGraph).
-- Add web search fallback (Tavily API) for out-of-domain queries.
-- Implement human-in-the-loop feedback (DSPy).
-- Build a web interface (Chainlit).
-- Add advanced features (MCP, JEE Bench evaluation, etc).
+## Next Steps (Completed)
+- Agent workflow/orchestration (LangGraph)
+- Web search fallback (Tavily API) for out-of-domain queries
+- Human-in-the-loop feedback (DSPy)
+- Web interface (Chainlit)
+
+## Possible Future Work
+- Add advanced features (MCP, JEE Bench evaluation, etc)
 
 ---
 _This README will be updated as the project progresses._
