@@ -70,3 +70,14 @@ Thumbs.db
 
 # PDF and large data
 *.pdf
+
+# Chainlit
+chainlit.log
+
+# Math Agent feedback and training logs
+feedback_log.json
+feedback_dspy.jsonl
+
+# Environment variables
+.env
+.env.*
