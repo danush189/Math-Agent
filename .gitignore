@@ -80,4 +80,4 @@ feedback_dspy.jsonl
 
 # Environment variables
 .env
-.env.*
+
