@@ -35,33 +35,6 @@ This project implements a Human-in-the-Loop Mathematical Professor AI Agent. It 
 - The output now includes the original question, aggregated info from KB/web, and an LLM-generated step-by-step solution.
 
 ---
-
-## Detailed Progress Update (as of July 2025)
-
-- Qdrant vector DB and ingestion scripts for GSM8K/MathQA datasets set up.
-- Implemented retrieval, web search fallback (Tavily), and LLM synthesis in `math_agent_workflow.py`.
-- Integrated OpenAI LLM for LaTeX-formatted math solutions.
-- Built Chainlit UI (`math_agent_chainlit.py`) for Q&A, feedback, and DSPy prompt optimization.
-- Added feedback logging and DSPy-compatible dataset creation.
-- Automated DSPy prompt optimization after every 5 feedbacks.
-- Added agentic verification and revision loop to the workflow.
-- Improved math formatting in Chainlit UI: only wrap equations in `$$...$$`, fix LaTeX symbols, and bold final answers.
-- Updated LLM prompt to enforce concise, step-by-step, block-LaTeX output, and later allowed for long, detailed solutions.
-- Expanded Tavily web search to include a broad set of authoritative math domains.
-- Fixed feedback UI so it appears for every response, not just the first.
-- Updated `.gitignore` to exclude feedback logs, DSPy logs, Chainlit logs, `.env`, and other sensitive/generated files.
-- Confirmed that only specific log/training JSON files are ignored, not all JSON files.
-- Refactored DSPy training to use `BootstrapFewShotWithRandomSearch`.
-- Updated Chainlit UI to display when a DSPy-optimized prompt is in use.
-- Fixed import errors for DSPy’s `Predict`.
-- Overhauled math formatting: only wrap equations in `$$...$$`, fix LaTeX symbols, bold final answers, and avoid wrapping text.
-- Updated LLM prompt for concise, block-LaTeX output, then allowed for long, detailed solutions.
-- Expanded Tavily web search fallback to include many more math-related domains for better coverage.
-- Improved feedback logging and DSPy dataset creation.
-- Ensured all code changes are compatible with the latest DSPy and LangChain APIs.
-- Reset `feedback_given` in Chainlit UI for every new question so feedback options always appear.
-- If secrets were ever committed, use `git filter-repo` or BFG to remove them from history and force-push after cleaning.
-
 ## Usage
 1. **Ingest Knowledge Base:**
    - Run `python ingest_math_knowledge_base.py` to populate Qdrant with math problems.
