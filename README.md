@@ -3,14 +3,11 @@
 ## Project Overview
 This project implements a Human-in-the-Loop Mathematical Professor AI Agent. It leverages a vector database (Qdrant) for mathematical knowledge storage and retrieval, and supports advanced agent workflows for solving and explaining math problems.
 
----
-
-## Possible Future Work
-- Add advanced features (MCP, JEE Bench evaluation, etc)
 
 ---
 
-## Agentic Workflow Overview
+
+### Agentic Workflow Overview
 
 The agentic workflow in `math_agent_workflow.py` consists of the following steps:
 
@@ -20,11 +17,27 @@ The agentic workflow in `math_agent_workflow.py` consists of the following steps
 4. **VerificationAgent**: Independently solves the problem and checks the LLM's answer. If the answer is not verified, it revises and re-verifies the solution.
 5. **Traceability**: Each agent logs its actions and decisions for transparency and debugging.
 
-### How the Workflow Runs
+#### Schematic Workflow Diagram
 
-* The workflow is coordinated by the `MathAgentWorkflow` class.
-* The process is fully automated and agentic, with each agent operating independently and passing state to the next.
-* If verification fails, the system attempts a single revision and re-verification.
+```mermaid
+flowchart TD
+    A[User Question] --> B[RetrievalAgent<br/>(Qdrant Vector DB)]
+    B -- "Confident Match" --> C[SolutionAgent<br/>(OpenAI LLM)]
+    B -- "Low/No Match" --> D[WebSearchAgent<br/>(Tavily)]
+    D --> C
+    C --> E[VerificationAgent]
+    E -- "Verified" --> F[Return Solution]
+    E -- "Needs Review" --> G[Revise Solution<br/>(LLM)]
+    G --> H[Re-Verification]
+    H -- "Verified" --> F
+    H -- "Still Needs Review" --> I[Return with Warning]
+```
+
+**How the Workflow Runs**
+
+- The workflow is coordinated by the `MathAgentWorkflow` class.
+- The process is fully automated and agentic, with each agent operating independently and passing state to the next.
+- If verification fails, the system attempts a single revision and re-verification.
 
 ---
 ## Running the System (with Docker for Qdrant)
@@ -87,5 +100,7 @@ Then open the provided local URL in your browser (usually http://localhost:8501 
 
 ---
 
+## Possible Future Work
+- Add advanced features (MCP, JEE Bench evaluation, etc)
 ---
 _This README will be updated as the project progresses._
