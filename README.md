@@ -21,13 +21,13 @@ The agentic workflow in `math_agent_workflow.py` consists of the following steps
 
 ```mermaid
 flowchart TD
-    A[User Question] --> B[RetrievalAgent (Qdrant Vector DB)]
-    B -- Confident Match --> C[SolutionAgent (OpenAI LLM)]
-    B -- Low/No Match --> D[WebSearchAgent (Tavily)]
+    A[User Question] --> B[RetrievalAgent - Qdrant Vector DB]
+    B -- Confident Match --> C[SolutionAgent - OpenAI LLM]
+    B -- Low/No Match --> D[WebSearchAgent - Tavily]
     D --> C
     C --> E[VerificationAgent]
     E -- Verified --> F[Return Solution]
-    E -- Needs Review --> G[Revise Solution (LLM)]
+    E -- Needs Review --> G[Revise Solution - LLM]
     G --> H[Re-Verification]
     H -- Verified --> F
     H -- Still Needs Review --> I[Return with Warning]
