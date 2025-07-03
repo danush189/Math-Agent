@@ -100,6 +100,31 @@ Then open the provided local URL in your browser (usually http://localhost:8501 
 
 ---
 
+## Demo
+
+[Watch the demo video](./Media/math_agent_workflow.mp4)
+
+---
+
+## Datasets Used in the Vector Database
+
+The Qdrant vector database is populated with the following datasets:
+
+- **GSM8K** ([gsm8k](https://huggingface.co/datasets/gsm8k), 'main' split):
+  - Grade school math word problems and solutions.
+  - Used for retrieval of step-by-step math reasoning at the elementary and middle school level.
+
+- **Math-QA** ([rvv-karma/Math-QA](https://huggingface.co/datasets/rvv-karma/Math-QA), 'train' split):
+  - Large-scale, multiple-choice math question dataset covering a wide range of topics and difficulty levels.
+  - Each entry includes a question, options, and the correct answer label.
+  - Used for retrieval of diverse math problems, including those with multiple-choice format.
+
+All questions from both datasets are embedded and stored in Qdrant, with each entry tagged by its source ("gsm8k" or "math_qa").
+
+
+
+---
+
 ## Possible Future Work
 - Add advanced features (MCP, JEE Bench evaluation, etc)
 ---
